@@ -1,9 +1,8 @@
 
 # XML Parser Program 
-(Complexity Analysis)
 
-**Authors:** David Palacios, Ngoc Tam Nguyen  
-**Date:** October 1, 2024  
+**Authors:** David Palacios
+**Date:** November 20, 2024  
 
 
 This XML Parser program is a Java-based tool designed to parse XML files and extract tags. It provides a custom implementation of data structures such as MyArrayList and MyStack to manage and store parsed elements efficiently. The application demonstrates robust handling of file input, line-by-line processing, and custom iterator functionality. This program is executed through a Java Archive file (.jar) via the command line interface.
