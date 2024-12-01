@@ -1,9 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package appDomain;
 
+package appDomain;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,46 +11,53 @@ import utilities.ListADT;
 import utilities.StackADT;
 
 /**
- *
- * @author user
+ * XML parser that reads and parses XML files.
  */
 public class XmlParser {
     
     public StackADT<String> stack;
-//    QueueADT<String> queue = new MyQueue<>();            
     public ListADT<String> parsedE;
 
-    
+    /**
+     * Constructor to initialize the stack and parsed elements list.
+     */
     public XmlParser() {
         stack = new MyStack<>();
         parsedE = new MyArrayList<>();
     }
         
-    
+    /**
+     * Parses the XML file at the given path.
+     * 
+     * @param path The path to the XML file.
+     */
     public void parseFile(Path path) {
         int lineNum = 1;      
-            try (BufferedReader reader = Files.newBufferedReader(path)) {           
-                String line;
-                while ((line = reader.readLine()) != null) {                                            
-//                    System.out.println(line);
-                      parseLine(line.trim(), lineNum);                  
-                      lineNum++;
-                }
-            } catch (IOException e) {
-                System.err.println("Error at line: " + lineNum);
-                e.printStackTrace();
-            }   
-            
-            System.out.println("\nParsed Tags : ");
-            
-            for (int i = 0; i < parsedE.size(); i++) {
-                String e = parsedE.get(i);
-                System.out.println(e);
+        try (BufferedReader reader = Files.newBufferedReader(path)) {           
+            String line;
+            while ((line = reader.readLine()) != null) {                                            
+                parseLine(line.trim(), lineNum);                  
+                lineNum++;
             }
-            
+        } catch (IOException e) {
+            System.err.println("Error at line: " + lineNum);
+            e.printStackTrace();
+        }   
+        
+        System.out.println("\nParsed Tags : ");
+        
+        for (int i = 0; i < parsedE.size(); i++) {
+            String e = parsedE.get(i);
+            System.out.println(e);
+        }
     }
-    
 
+    /**
+     * Parses a single line of the XML file.
+     * 
+     * @param line The line to parse.
+     * @param lineNum The line number.
+     */
     public void parseLine(String line, int lineNum) {
         int tagStart = 0;
 
@@ -73,7 +76,6 @@ public class XmlParser {
 
                 if (tagContent.startsWith("/")) {                   //closing tag
                     String tagName = tagContent.substring(1).trim(); 
-//                    System.out.println("closing tag: " + tagName);
 
                     if (stack.isEmpty() || !stack.peek().equals(tagName)) {                   
                         System.out.println("Error at line " + lineNum + "\nUnmatched closing tag: <" + tagContent + ">");
@@ -83,7 +85,6 @@ public class XmlParser {
                     }
                 } else {  
                     String tagName = tagContent.split(" ")[0].trim();       //set first word as tag name (ignore attributes)
-//                    System.out.println("opening tag: " + tagName);
                     stack.push(tagName);
                 }
 
@@ -92,12 +93,5 @@ public class XmlParser {
                 tagStart++;  
             }
         }
-       
     }
-    
-
 }
-
-    
-    
-

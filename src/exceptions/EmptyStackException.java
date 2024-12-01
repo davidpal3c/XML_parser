@@ -5,16 +5,22 @@
 package exceptions;
 
 /**
- *
- * @author mailt
+ * Exception thrown when an operation is performed on an empty stack.
  */
 public class EmptyStackException extends Exception {
 
+    /**
+     * Constructs a new EmptyStackException with the specified detail message.
+     * 
+     * @param message The detail message.
+     */
     public EmptyStackException(String message) {
         super(message);
     }
 
+    /**
+     * Constructs a new EmptyStackException with no detail message.
+     */
     public EmptyStackException() {
     }
-    
 }

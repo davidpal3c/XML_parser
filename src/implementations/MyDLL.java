@@ -9,8 +9,9 @@ import utilities.ListADT;
 //import java.lang.reflect.Array;
 
 /**
+ * Implementation of the ListADT interface using a doubly linked list.
  *
- * @author user
+ * @param <E> The type of elements in the list.
  */
 public class MyDLL<E> implements ListADT<E> {
     

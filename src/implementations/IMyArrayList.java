@@ -1,15 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package implementations;
 
 import java.util.NoSuchElementException;
 import utilities.Iterator;
 
 /**
+ * Iterator for the MyArrayList implementation.
  *
- * @author mailt
+ * @param <E> The type of elements in the array list.
  */
 public class IMyArrayList<E> implements Iterator<E> {
     
@@ -17,6 +14,11 @@ public class IMyArrayList<E> implements Iterator<E> {
     int size;
     int index;
 
+    /**
+     * Constructs an iterator for the specified MyArrayList.
+     * 
+     * @param data The MyArrayList to iterate over.
+     */
     public IMyArrayList(MyArrayList<E> data) {
         this.data = data;
         this.size = data.size();
@@ -36,5 +38,4 @@ public class IMyArrayList<E> implements Iterator<E> {
         
         return data.get(++index);
     }
-    
 }
